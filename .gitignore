@@ -1,0 +1,8 @@
+coverage/
+mochawesome-reports/
+build/
+node_modules/
+typings/
+.vscode
+.DS_Store
+LearningTask.md
