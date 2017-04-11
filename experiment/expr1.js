@@ -26,13 +26,14 @@ Expression.prototype.toString = function () {
     var str = '';
     this.sort();
     for(var i = 0;i<this.length;i++) {
-        if(this.$containArray[i].num<0) {
-            str += this.$containArray[i].toString();
+        if(this.getElement(i).num === 0) continue;
+        if(this.getElement(i).num<0) {
+            str += this.getElement(i).toString();
         } else {
             if(i!==0) {
                 str += '+';
             }
-            str += this.$containArray[i].toString();
+            str += this.getElement(i).toString();
         }
     }
     return str;
