@@ -10,7 +10,7 @@ List.prototype = {
     remove: function(element) {
         var pos = this.find(element);
         if (pos !== -1) {
-            for(var i = pos+1; i < this.$length; i++) {
+            for (var i = pos + 1; i < this.$length; i++) {
                 this.$containArray[i - 1] = this.$containArray[i];
             }
             this.$length--;
@@ -18,15 +18,15 @@ List.prototype = {
         }
     },
     find: function(element) {
-        for(var i = 0; i < this.$length; i++) {
-            if(this.$containArray[i] === element) {
+        for (var i = 0; i < this.$length; i++) {
+            if (this.$containArray[i] === element) {
                 return i;
             }
         }
         return -1;
     },
     insert: function(element, pos) {
-        for(var i = this.$length; i > pos; i--) {
+        for (var i = this.$length; i > pos; i--) {
             this.$containArray[i] = this.$containArray[i - 1];
         }
         this.$containArray[pos] = element;

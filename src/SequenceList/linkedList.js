@@ -2,12 +2,12 @@ function LinkedList() {
     this.$first = null;
     this.$last = null;
     this.$length = 0;
-};
+}
 
 LinkedList.prototype = {
     addFirst: function(element) {
         var node = new $LinkedListNode(element);
-        if(this.$length === 0) {
+        if (this.$length === 0) {
             this.$first = node;
             this.$last = node;
         } else {
@@ -19,7 +19,7 @@ LinkedList.prototype = {
     },
     addLast: function(element) {
         var node = new $LinkedListNode(element);
-        if(this.$length === 0) {
+        if (this.$length === 0) {
             this.$first = node;
             this.$last = node;
         } else {
@@ -47,14 +47,14 @@ LinkedList.prototype = {
     },
     remove: function(element) {
         var p = this.$first;
-        while(p !== null) {
-            if(p === element) {
-                if(p.previous !== null) {
+        while (p !== null) {
+            if (p === element) {
+                if (p.previous !== null) {
                     p.previous.next = p.next;
                 } else { // p is the first element
                     this.$first = p.next;
                 }
-                if(p.next !== null) {
+                if (p.next !== null) {
                     p.next.previous = p.previous;
                 } else { // p is the last element
                     this.$last = p.previous;
@@ -69,8 +69,8 @@ LinkedList.prototype = {
     getElement: function(pos) {
         var p = this.$first;
         var i = 0;
-        while (p != null) {
-            if(i === pos) {
+        while (p !== null) {
+            if (i === pos) {
                 return p;
             } else {
                 p = p.next;
@@ -81,8 +81,8 @@ LinkedList.prototype = {
     },
     contains: function(element) {
         var p = this.$first;
-        while(p !== null) {
-            if(p.value == element) {
+        while (p !== null) {
+            if (p.value === element) {
                 return true;
             } else {
                 p = p.next;
@@ -98,7 +98,7 @@ LinkedList.prototype = {
     toString: function() {
         var n = [];
         var p = this.$first;
-        while(p !== null) {
+        while (p !== null) {
             n.push(p.value);
             p = p.next;
         }

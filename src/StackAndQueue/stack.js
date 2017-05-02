@@ -9,7 +9,7 @@ Stack.prototype = {
         this.$linkedList.addFirst(element);
     },
     pop: function() {
-        if(this.$linkedList.length !== 0) {
+        if (this.$linkedList.length !== 0) {
             var value = this.top;
             this.$linkedList.remove(this.$linkedList.first);
             return value;
@@ -35,7 +35,7 @@ Object.defineProperties(Stack.prototype, {
     },
     'top': {
         get: function() {
-            if(this.length !== 0) {
+            if (this.length !== 0) {
                 return this.$linkedList.first.value;
             } else {
                 return null;
