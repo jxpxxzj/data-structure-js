@@ -44,6 +44,14 @@ List.prototype = {
     },
     getElement: function(pos) {
         return this.$containArray[pos];
+    },
+    reverse: function() {
+        this.$containArray.reverse();
+    },
+    map: function(callback) {
+        var arr = this.$containArray.map(callback);
+        this.$containArray = arr;
+        return this;
     }
 };
 
