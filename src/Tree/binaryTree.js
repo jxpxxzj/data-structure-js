@@ -27,13 +27,11 @@ BinaryTree.prototype = {
     },
     insertL: function(val, node) {
         var n = new TreeNode(val);
-        //n.lChild = node.lChild;
         node.lChild = n;
         this.$length++;
     },
     insertR: function(val, node) {
         var n = new TreeNode(val);
-        //n.rChild = node.rChild;
         node.rChild = n;
         this.$length++;
     },
@@ -109,17 +107,16 @@ BinaryTree.prototype = {
     }
 };
 Object.defineProperties(BinaryTree.prototype, {
-    "isEmpty": {
+    'isEmpty': {
         get: function() {
             return this.head === null;
         }
     },
-    "length": {
+    'length': {
         get: function() {
             return this.$length;
         }
     }
 });
-
 
 module.exports = BinaryTree;

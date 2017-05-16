@@ -13,7 +13,7 @@ h     i           j    k
 
 inOrder:
 h f b i g a d j c e k
-7 5 1 8 6 0 3 9 2 4 10   
+7 5 1 8 6 0 3 9 2 4 10
 */
 
 // Tree creation
@@ -48,10 +48,10 @@ tree.inOrder(a);
 console.log('\nPostOrder:');
 tree.postOrder(a);
 
-(function () {
+(function() {
     // travel
     var stack = [a];
-    var travelresult = []
+    var travelresult = [];
     // check
     var in1 = 0;
     var in2 = 0;
@@ -60,39 +60,39 @@ tree.postOrder(a);
     var min = Number.MAX_VALUE;
     var max = Number.MIN_VALUE;
     function check(node) {
-        if(+node.data > max) {
+        if (+node.data > max) {
             max = node.data;
         }
-        if(+node.data < min) {
+        if (+node.data < min) {
             min = node.data;
         }
-        if(tree.isLeaf(node)) {
+        if (tree.isLeaf(node)) {
             leaf++;
             return;
         }
-        if((node.lChild !== null) && (node.rChild !== null)) {
+        if ((node.lChild !== null) && (node.rChild !== null)) {
             in2++;
             return;
         }
         in1++;
     }
     (function travel() {
-        while(stack.length !== 0) {
-            var node = stack.pop()
+        while (stack.length !== 0) {
+            var node = stack.pop();
             travelresult[node.data] = true;
             length++;
             check(node);
-            if(!travelresult[node.data]) {
+            if (!travelresult[node.data]) {
                 stack.push(node);
             }
-            if(node.lChild !== null && !travelresult[node.lChild.data]) {
+            if (node.lChild !== null && !travelresult[node.lChild.data]) {
                 stack.push(node.lChild);
             }
-            if(node.rChild !== null && !travelresult[node.rChild.data]) {
+            if (node.rChild !== null && !travelresult[node.rChild.data]) {
                 stack.push(node.rChild);
             }
         }
-    })(a);
+    }(a));
     var o = {
         'Length': length,
         'In1': in1,
@@ -102,6 +102,8 @@ tree.postOrder(a);
         'Max': +max
     };
     console.log('\n', o);
-})();
+}());
+
+console.log(JSON.stringify(tree));
 
 module.exports = tree;

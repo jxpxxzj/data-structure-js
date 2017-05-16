@@ -100,7 +100,6 @@
         "no-useless-rename": "error",
         "prefer-spread": "error",
         "require-yield": "error",
-        "rest-spread-spacing": ["error", "never"],
-        "linebreak-style": ["error", "windows"]
+        "rest-spread-spacing": ["error", "never"]
     }
 }
