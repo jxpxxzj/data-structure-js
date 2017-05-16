@@ -1,3 +1,6 @@
+// consider remove it?
+var process = require('process');
+
 function TreeNode(val) {
     this.data = val;
     this.lChild = null;
@@ -7,9 +10,12 @@ function TreeNode(val) {
 function BinaryTree(val) {
     if (typeof val === 'undefined') {
         this.head = null;
+        this.$length = 0;
     } else {
         this.head = new TreeNode(val);
+        this.$length = 1;
     }
+    this.$orderarr = [];
 }
 
 BinaryTree.prototype = {
@@ -21,13 +27,15 @@ BinaryTree.prototype = {
     },
     insertL: function(val, node) {
         var n = new TreeNode(val);
-        n.lChild = node;
+        //n.lChild = node.lChild;
         node.lChild = n;
+        this.$length++;
     },
     insertR: function(val, node) {
         var n = new TreeNode(val);
-        n.rChild = node;
+        //n.rChild = node.rChild;
         node.rChild = n;
+        this.$length++;
     },
     deleteL: function(node) {
         if (node === null || node.lChild === null) {
@@ -35,6 +43,7 @@ BinaryTree.prototype = {
         }
         var n = node.lChild;
         node.lChild = null;
+        this.$length--;
         return n;
     },
     deleteR: function(node) {
@@ -43,6 +52,7 @@ BinaryTree.prototype = {
         }
         var n = node.rChild;
         node.rChild = null;
+        this.$length--;
         return n;
     },
     search: function(root, val) {
@@ -71,7 +81,7 @@ BinaryTree.prototype = {
         }
         if (node !== null) {
             this.inOrder(node.lChild);
-            console.log(node.data + ' ');
+            process.stdout.write(node.data + ' ');
             this.inOrder(node.rChild);
         }
     },
@@ -81,9 +91,9 @@ BinaryTree.prototype = {
             throw err;
         }
         if (node !== null) {
-            console.log(node.data + ' ');
-            this.inOrder(node.lChild);
-            this.inOrder(node.rChild);
+            process.stdout.write(node.data + ' ');
+            this.preOrder(node.lChild);
+            this.preOrder(node.rChild);
         }
     },
     postOrder: function(node) {
@@ -92,14 +102,24 @@ BinaryTree.prototype = {
             throw err;
         }
         if (node !== null) {
-            this.inOrder(node.lChild);
-            this.inOrder(node.rChild);
-            console.log(node.data + ' ');
+            this.postOrder(node.lChild);
+            this.postOrder(node.rChild);
+            process.stdout.write(node.data + ' ');
         }
     }
 };
-Object.defineProperty(BinaryTree.prototype, 'isEmpty', {
-    get: function() {
-        return this.head !== null;
+Object.defineProperties(BinaryTree.prototype, {
+    "isEmpty": {
+        get: function() {
+            return this.head === null;
+        }
+    },
+    "length": {
+        get: function() {
+            return this.$length;
+        }
     }
 });
+
+
+module.exports = BinaryTree;
